@@ -1,6 +1,3 @@
-var util= require('util');
-var encoder = new util.TextEncoder('utf-8');
-
 const xrpl = require("xrpl")
 
 // Wrap code in an async function so we can use await
@@ -10,7 +7,7 @@ async function main() {
     const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
     await client.connect()
   
-    // ... custom code goes here
+    
     // Get Ledger Info
     const test_wallet = xrpl.Wallet.fromSeed("snY8EKMjFtathoeBAf4Ueyt277Xu5")
 
@@ -28,8 +25,8 @@ async function main() {
     const prepared = await client.autofill({
       "TransactionType": "Payment",
       "Account": test_wallet.address,
-      "Amount": xrpl.xrpToDrops("50"),
-      "Destination": "rDgfxxJ7HoSby2SuR9u6PNXKijfEurKsZq"
+      "Amount": xrpl.xrpToDrops("20"),
+      "Destination": "rLft58EzCGTjX8sFtiAWQ7im3a7snEaLcP"
     })
     const max_ledger = prepared.LastLedgerSequence
     console.log("Prepared transaction instructions:", prepared)
